@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>2018!</title>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+</head>
+<style>
+
+  body {
+    background-color: #010a00;
+  }
+
+
+  h1 {
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    color: #fff;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    animation: neon2 0.9s ease-in-out infinite alternate;
+  }
+
+  table {
+    text-align: center;
+    color: #fff;
+    font-family: 'Comfortaa', cursive;
+    animation: neon2 0.9s ease-in-out infinite alternate;
+  }
+
+  a {
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Comfortaa', cursive;
+    animation: neon 0.9s ease-in-out infinite alternate;
+  }
+
+
+  .container {
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Comfortaa', cursive;
+    animation: neon 0.9s ease-in-out infinite alternate;
+  }
+
+  .border1 {
+    border: 2px solid #fff;
+    padding: 30px;
+    border-radius: 25px;
+    animation: neonForBorder 1.2s ease-in-out infinite alternate;
+  }
+
+
+
+  @keyframes neonForBorder {
+    from {
+      /* inset 0 0 10px #000000; */
+      box-shadow:
+      inset 0 0 6px rgba(255, 0, 128, 0.42),
+      inset 0 0 30px rgba(255, 0, 128, 0.78),
+      inset 0 0 12px rgba(30, 132, 242, 0.52),
+      inset 0 0 21px rgba(30, 132, 242, 0.92),
+      inset 0 0 34px rgba(30, 132, 242, 0.78),
+      inset 0 0 54px rgba(255, 0, 128, 0.78),
+      0 0 6px rgba(255, 0, 128, 0.42),
+      0 0 30px rgba(255, 0, 128, 0.62),
+      0 0 12px rgba(30, 132, 242, 0.52),
+      0 0 21px rgba(30, 132, 242, 0.92),
+      0 0 34px rgba(30, 132, 242, 0.78),
+      0 0 54px rgba(255, 0, 128, 0.78);
+    }
+    to {
+      box-shadow:
+      inset 0 0 6px rgba(202, 228, 225, 0.98),
+      inset 0 0 30px rgba(202, 228, 225, 0.42),
+      inset 0 0 12px rgba(30, 132, 242, 0.58),
+      inset 0 0 22px rgba(30, 132, 242, 0.84),
+      inset 0 0 38px rgba(30, 132, 242, 0.88),
+      inset 0 0 60px rgba(30, 132, 242, 1),
+      0 0 6px rgba(202, 228, 225, 0.98),
+      0 0 30px rgba(202, 228, 225, 0.42),
+      0 0 12px rgba(30, 132, 242, 0.58),
+      0 0 22px rgba(30, 132, 242, 0.84),
+      0 0 38px rgba(30, 132, 242, 0.88),
+      0 0 60px rgba(30, 132, 242, 1);
+    }
+  }
+
+
+  @keyframes neon {
+    from {
+      text-shadow: 0 0 6px rgba(251,230,241,0.78),
+      0 0 30px rgba(255,0,128,0.78),
+      0 0 12px rgba(30, 132, 242, 0.52),
+      0 0 21px rgba(30, 132, 242, 0.92),
+      0 0 34px rgba(30, 132, 242, 0.78),
+      0 0 54px rgba(255,0,128,0.78);
+    }
+    to {
+      text-shadow: 0 0 6px rgba(202, 228, 225, 0.98),
+      0 0 30px rgba(202, 228, 225, 0.42),
+      0 0 12px rgba(30, 132, 242, 0.58),
+      0 0 22px rgba(30, 132, 242, 0.84),
+      0 0 38px rgba(30, 132, 242, 0.88),
+      0 0 60px rgba(30, 132, 242, 1);
+    }
+  }
+
+  @keyframes neon2 {
+    from {
+      text-shadow: 0 0 6px #ffff14,
+      0 0 30px #ffff14,
+      0 0 12px #ffff14,
+      0 0 21px #ffffeb,
+      0 0 34px #ffffeb,
+      0 0 54px #ffffeb;
+    }
+    to {
+      text-shadow: 0 0 6px #ffffeb,
+      0 0 30px #b3b300,
+      0 0 12px #b3b300,
+      0 0 22px #b3b300,
+      0 0 38px #ffff14,
+      0 0 60px #b3b300;
+    }
+  }
+
+  @keyframes neon3 {
+    from {
+      text-shadow: 0 0 6px #7b92b5,
+      0 0 30px #7b92b5,
+      0 0 12px #7b92b5,
+      0 0 21px #7b92b5,
+      0 0 34px #7b92b5,
+      0 0 54px #7b92b5;
+    }
+    to {
+      text-shadow: 0 0 6px #817bb5,
+      0 0 30px #817bb5,
+      0 0 12px #817bb5,
+      0 0 22px #817bb5,
+      0 0 38px #817bb5,
+      0 0 60px #817bb5;
+    }
+  }
+</style>
+
+
+
+<body>
+  <div class="container">
+    <h1 class="neon">Hello, 2018<br></h1>
+    <h1 class="neon">Happy New Year</h1>
+  </div>
+
+  <div class="border1">
+
+    <table class="table" align="center" cellpadding="20">
+      <h2>2018 in various calendars</h2>
+      <tr>
+        <td>Gregorian calendar</td>
+        <td>2018</td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>MMXVIII</td>
+      </tr>
+
+      <tr>
+        <td>Ab urbe condita</td>
+        <td>2771</td>
+      </tr>
+
+      <tr>
+        <td>Armenian calendar</td>
+        <td>1467</td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>ԹՎ ՌՆԿԷ</td>
+      </tr>
+
+      <tr>
+        <td>Assyrian calendar</td>
+        <td>6768</td>
+      </tr>
+
+      <tr>
+        <td>Bahá'í calendar</td>
+        <td>174–175</td>
+      </tr>
+
+      <tr>
+        <td>Balinese saka calenda</td>
+        <td>1939–1940</td>
+      </tr>
+
+      <tr>
+        <td>Berber calendar</td>
+        <td>2968</td>
+      </tr>
+
+      <tr>
+        <td>British Regnal year</td>
+        <td>66 Eliz. 2 – 67 Eliz. 2</td>
+      </tr>
+
+      <tr>
+        <td>Buddhist calendar</td>
+        <td>2562</td>
+      </tr>
+
+      <tr>
+        <td>Burmese calendar</td>
+        <td>1380</td>
+      </tr>
+
+      <tr>
+        <td>Byzantine calendar</td>
+        <td>7526–7527</td>
+      </tr>
+
+      <tr>
+        <td>Chinese calendar</td>
+        <td>丁酉年 (Fire Rooster)<br> 4714 or 4654<br> — to —<br> 戊戌年 (Earth Dog)<br> 4715 or 4655</td>
+      </tr>
+
+      <tr>
+        <td>Coptic calendar</td>
+        <td>1734–1735</td>
+      </tr>
+
+      <tr>
+        <td>Discordian calendar</td>
+        <td>3184</td>
+      </tr>
+
+      <tr>
+        <td>Ethiopian calendar</td>
+        <td>2010–2011</td>
+      </tr>
+
+      <tr>
+        <td>Hebrew calendar</td>
+        <td>5778–5779</td>
+      </tr>
+
+      <tr>
+        <td>Hindu calendars</td>
+        <td> - Vikram Samvat</td>
+        <td>2074–2075</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td> - Shaka Samvat</td>
+        <td>1939–1940</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td> - Kali Yuga</td>
+        <td>5118–5119</td>
+      </tr>
+
+      <tr>
+        <td>Holocene calendar</td>
+        <td>12018</td>
+      </tr>
+
+      <tr>
+        <td>Igbo calendar</td>
+        <td>1018–1019</td>
+      </tr>
+
+      <tr>
+        <td>Iranian calendar</td>
+        <td>1396–1397</td>
+      </tr>
+
+      <tr>
+        <td>Islamic calendar</td>
+        <td>1439–1440</td>
+      </tr>
+
+      <tr>
+        <td>Japanese calendar</td>
+        <td>Heisei 30<br> (平成３０年)
+        </td>
+      </tr>
+
+      <tr>
+        <td>Javanese calendar</td>
+        <td>1951–1952</td>
+      </tr>
+
+      <tr>
+        <td>Juche calendar</td>
+        <td>107</td>
+      </tr>
+
+      <tr>
+        <td>Korean calendar</td>
+        <td>4351</td>
+      </tr>
+
+      <tr>
+        <td>Minguo calendar</td>
+        <td>ROC 107<br> (民國107年)
+        </td>
+      </tr>
+
+      <tr>
+        <td>Nanakshahi calendar</td>
+        <td>550</td>
+      </tr>
+
+      <tr>
+        <td>Thai solar calendar</td>
+        <td>2561</td>
+      </tr>
+
+      <tr>
+        <td>Tibetan calendar</td>
+        <td>阴火鸡年<br> (female Fire-Rooster)<br> 2144 or 1763 or 991<br> — to —<br> 阳土狗年
+          <br> (male Earth-Dog)<br> 2145 or 1764 or 992</td>
+      </tr>
+
+      <tr>
+        <td>Unix time</td>
+        <td>1514764800 – 1546300799</td>
+      </tr>
+    </table>
+  <br>
+  <br>
+  <br>
+  <div style=text-align:center;>
+    <a href="https://en.wikipedia.org/wiki/2018" target="_blank">Wiki -></a>
+  </div>
+  </div>
+
+</body>
+
+</html>
