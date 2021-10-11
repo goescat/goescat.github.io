@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tool Box</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <div class="container">
+        <div class="row" style="background-color: #FFEFE2; padding: 30px;">
+            <div class="col-sm-4">
+            <h3>百分比計算</h3>
+
+            <script>
+            function percent_counter() {
+                var now_num = document.getElementById("now_num").value;
+                var total_num = document.getElementById("total_num").value;
+
+                var percent_num = (100/total_num) * now_num;
+                percent_num = percent_num.toFixed(2);
+                document.getElementById("percent_num").innerHTML = " = " + percent_num + " %";
+            }
+            </script>
+            <input id="now_num" type="number" placeholder="分子" style="width: 60px;">
+            / <input id="total_num" type="number" placeholder="分母" style="width: 60px;">
+            <button onclick="percent_counter()">等於</button>
+            <span id="percent_num"> __ %</span>
+            </div>
+
+            <div class="col-sm-4">
+                <h3>比值換算</h3>
+                <script>
+                function ratio_counter() {
+                    var a_num_1 = document.getElementById("a_num_1").value;
+                    var a_num_2 = document.getElementById("a_num_2").value;
+                    var b_num_1 = document.getElementById("b_num_1").value;
+
+                    var b_num_2 = (b_num_1/a_num_1) * a_num_2;
+                    document.getElementById("b_num_2").innerHTML = b_num_2;
+                }
+                </script>
+                <input id="a_num_1" type="number" placeholder="x" style="width: 60px;">
+                : <input id="a_num_2" type="number" placeholder="y" style="width: 60px;">
+                <button onclick="ratio_counter()">等於</button>
+
+                <input id="b_num_1" type="number" placeholder="z" style="width: 60px;">
+                : <span id="b_num_2">__</span>
+            </div>
+
+            <div class="col-sm-4">
+                <h3>方形面積計算</h3>
+
+                <script>
+                function sq_area_counter() {
+                    var h_num = document.getElementById("sq_h_num").value;
+                    var w_num = document.getElementById("sq_w_num").value;
+
+                    var area_sum = h_num * w_num;
+                    document.getElementById("sq_area").innerHTML = area_sum;
+                }
+                </script>
+                <input id="sq_h_num" type="number" placeholder="長" style="width: 60px;">
+                <input id="sq_w_num" type="number" placeholder="寬" style="width: 60px;">
+                <button onclick="sq_area_counter()">等於</button>
+                <span id="sq_area">__</span>
+            </div>
+        </div>
+        <div class="row" style="padding: 30px;">
+            <div class="col-sm-4">
+                <h3>圓形面積計算</h3>
+
+                <script>
+                function cr_area_counter() {
+                    var r_num = document.getElementById("cr_r_num").value;
+
+                    var area_sum = r_num * r_num * 3.14;
+                    document.getElementById("cr_area").innerHTML = area_sum;
+                }
+                </script>
+                <input id="cr_r_num" type="number" placeholder="半徑" style="width: 60px;">
+                <button onclick="cr_area_counter()">大約等於</button>
+                <span id="cr_area">__</span>
+            </div>
+
+            <div class="col-sm-4">
+                <h3>三角形面積計算</h3>
+
+                <script>
+                function tr_area_counter() {
+                    var b_num = document.getElementById("tr_b_num").value;
+                    var h_num = document.getElementById("tr_h_num").value;
+
+                    var area_sum = (b_num * h_num) / 2;
+                    document.getElementById("tr_area").innerHTML = area_sum;
+                }
+                </script>
+                <input id="tr_b_num" type="number" placeholder="底" style="width: 60px;">
+                <input id="tr_h_num" type="number" placeholder="高" style="width: 60px;">
+                <button onclick="tr_area_counter()">等於</button>
+                <span id="tr_area">__</span>
+            </div>
+
+            <div class="col-sm-4">
+                <h3>梯形面積計算</h3>
+
+                <script>
+                function tra_area_counter() {
+                    var t_num = document.getElementById("tra_t_num").value;
+                    var b_num = document.getElementById("tra_b_num").value;
+                    var h_num = document.getElementById("tra_h_num").value;
+
+                    var area_sum = ((t_num + b_num) * h_num) /2;
+                    document.getElementById("tra_area").innerHTML = area_sum;
+                }
+                </script>
+                <input id="tra_t_num" type="number" placeholder="上底" style="width: 60px;">
+                <input id="tra_b_num" type="number" placeholder="下底" style="width: 60px;">
+                <input id="tra_h_num" type="number" placeholder="高" style="width: 60px;">
+                <button onclick="tra_area_counter()">等於</button>
+                <span id="tra_area">__</span>
+            </div>
+        </div>
+    </div>
+</html>
