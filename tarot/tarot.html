@@ -102,10 +102,13 @@
             // Get spread and mapping to need how many cards
             var card_spread = document.getElementById("card").value;
             var spread_need_cards = {
-                "3_card_spread": 3,
                 "1_card_spread": 1,
-                "1_card_spread_major_arcana": 1,
-                "choose_card_spread": 5,
+                "2_card_spread": 2,
+                "3_card_spread": 3,
+                "4_card_spread": 4,
+                "5_card_spread": 5,
+                "6_card_spread": 6,
+                "10_card_spread": 10,
             }
 
             // Display card back-side with need cards
@@ -117,15 +120,15 @@
             document.getElementById("card_list").style = "display:none";
 
 
-            if (card_spread == "3_card_spread"){
-                document.getElementById("card_spread_description").innerHTML="<h3>時間之流</h3>牌陣順序：[1][2][3]<br>第一張：過去<br>第二張：現在<br>第三張：未來";
-            }
-            if(card_spread == "1_card_spread"){
-                document.getElementById("card_spread_description").innerHTML="<h3>單張牌</h3>";
-            }
-            if(card_spread == "choose_card_spread"){
-                document.getElementById("card_spread_description").innerHTML="[4] [5]<br>[2][3]<br>[1]";
-            }
+            // if (card_spread == "3_card_spread"){
+            //     document.getElementById("card_spread_description").innerHTML="<h3>時間之流</h3>牌陣順序：[1][2][3]<br>第一張：過去<br>第二張：現在<br>第三張：未來";
+            // }
+            // if(card_spread == "1_card_spread"){
+            //     document.getElementById("card_spread_description").innerHTML="<h3>單張牌</h3>";
+            // }
+            // if(card_spread == "choose_card_spread"){
+            //     document.getElementById("card_spread_description").innerHTML="[4] [5]<br>[2][3]<br>[1]";
+            // }
         }
 
         // Get cards when submit
@@ -140,9 +143,13 @@
             // Get spread and mapping to need how many cards
             var card_spread = document.getElementById("card").value;
             var spread_need_cards = {
-                "3_card_spread": 3,
                 "1_card_spread": 1,
-                "choose_card_spread": 5,
+                "2_card_spread": 2,
+                "3_card_spread": 3,
+                "4_card_spread": 4,
+                "5_card_spread": 5,
+                "6_card_spread": 6,
+                "10_card_spread": 10,
             };
 
             // Set card list
@@ -158,7 +165,14 @@
                 var random_card = 0;
 
                 // Get card from all 78 cards
-                var random_card = Math.floor(Math.random() * (all_card * 2) ) - all_card;
+                // If only using normal card
+                if (document.getElementById("cbox2").checked){
+                    var random_card = Math.floor(Math.random() * all_card);
+
+                }
+                else{
+                    var random_card = Math.floor(Math.random() * (all_card * 2) ) - all_card;
+                }
 
                 // // Make reversed card
                 // var is_reversed = Math.floor(Math.random() * 2);
@@ -204,14 +218,18 @@
         <h1>簡易塔羅抽牌</h1>
         <label>請選擇牌陣：</label>
         <select id="card" onchange="choose_card_spread();">
-            <option>--牌陣--</option>
-            <option value="3_card_spread">時間之流</option>
-            <option value="1_card_spread">單張牌</option>
-            <option value="choose_card_spread">二擇一</option>
+            <option>--牌數--</option>
+            <option value="1_card_spread">1張牌</option>
+            <option value="2_card_spread">2張牌</option>
+            <option value="3_card_spread">3張牌</option>
+            <option value="5_card_spread">5張牌</option>
+            <option value="10_card_spread">10張牌</option>
         </select>
 
         <input type="checkbox" id="cbox1" value="only_major_arcana">
         <label for="cbox1">僅使用大阿爾克那</label>
+        <input type="checkbox" id="cbox2" value="only_normal_card">
+        <label for="cbox2">僅使用正位</label>
 
         <input type="submit" value="抽牌" onclick="get_random_card();">
         <br>
@@ -220,6 +238,11 @@
         <img id="card_3" src="card_img/back.jpg" width="100px" style="display:none"></img>
         <img id="card_4" src="card_img/back.jpg" width="100px" style="display:none"></img>
         <img id="card_5" src="card_img/back.jpg" width="100px" style="display:none"></img>
+        <img id="card_6" src="card_img/back.jpg" width="100px" style="display:none"></img>
+        <img id="card_7" src="card_img/back.jpg" width="100px" style="display:none"></img>
+        <img id="card_8" src="card_img/back.jpg" width="100px" style="display:none"></img>
+        <img id="card_9" src="card_img/back.jpg" width="100px" style="display:none"></img>
+        <img id="card_10" src="card_img/back.jpg" width="100px" style="display:none"></img>
         <p id="card_list" style="display:none"></p>
         <!-- <p id="card_debug"></p> -->
         <br>
