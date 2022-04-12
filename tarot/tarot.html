@@ -111,6 +111,30 @@
                 "10_card_spread": 10,
             }
 
+            // Initainl all card to the back img
+            document.getElementById("card_1").src = "card_img/back.jpg";
+            document.getElementById("card_2").src = "card_img/back.jpg";
+            document.getElementById("card_3").src = "card_img/back.jpg";
+            document.getElementById("card_4").src = "card_img/back.jpg";
+            document.getElementById("card_5").src = "card_img/back.jpg";
+            document.getElementById("card_6").src = "card_img/back.jpg";
+            document.getElementById("card_7").src = "card_img/back.jpg";
+            document.getElementById("card_8").src = "card_img/back.jpg";
+            document.getElementById("card_9").src = "card_img/back.jpg";
+            document.getElementById("card_10").src = "card_img/back.jpg";
+
+            // Initainl last time card display to none
+            document.getElementById("card_1").style = "display:none";
+            document.getElementById("card_2").style = "display:none";
+            document.getElementById("card_3").style = "display:none";
+            document.getElementById("card_4").style = "display:none";
+            document.getElementById("card_5").style = "display:none";
+            document.getElementById("card_6").style = "display:none";
+            document.getElementById("card_7").style = "display:none";
+            document.getElementById("card_8").style = "display:none";
+            document.getElementById("card_9").style = "display:none";
+            document.getElementById("card_10").style = "display:none";
+
             // Display card back-side with need cards
             for (var i=1; i<spread_need_cards[card_spread]+1; i++){
                 document.getElementById("card_" + i).style = "";
@@ -134,7 +158,7 @@
         // Get cards when submit
         function get_random_card() {
 
-            var all_card = 78;
+            var all_card = 77;
 
             if (document.getElementById("cbox1").checked){
                 all_card = 22;
@@ -167,15 +191,11 @@
                 // Get card from all 78 cards
                 // If only using normal card
                 if (document.getElementById("cbox2").checked){
-                    var random_card = Math.floor(Math.random() * all_card);
-
+                    var random_card = Math.floor(Math.random() * (all_card - 0) + 0);
                 }
                 else{
                     var random_card = Math.floor(Math.random() * (all_card * 2) ) - all_card;
                 }
-
-                // // Make reversed card
-                // var is_reversed = Math.floor(Math.random() * 2);
 
                 // If do not have this card before
                 if (used_card.includes(random_card) === false){
@@ -188,8 +208,6 @@
                     card_count ++;
                 }
             }
-
-            // document.getElementById("card_debug").innerHTML = "card: " +card_list;
 
             var card_name_list = "";
 
