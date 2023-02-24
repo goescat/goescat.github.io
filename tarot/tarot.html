@@ -1,271 +1,231 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>簡易塔羅抽牌</title>
+        <title>璞實無華ㄉ塔羅抽牌</title>
     </head>
-    <script>
-        // card number and name mapping
-        var card_name_dict={
-            0:"愚者",
-            1:"魔術師",
-            2:"女教皇",
-            3:"女帝",
-            4:"皇帝",
-            5:"教皇",
-            6:"戀人",
-            7:"戰車",
-            8:"力量",
-            9:"隱者",
-            10:"命運之輪",
-            11:"正義",
-            12:"吊人",
-            13:"死神",
-            14:"節制",
-            15:"惡魔",
-            16:"高塔",
-            17:"星星",
-            18:"月亮",
-            19:"太陽",
-            20:"審判",
-            21:"世界",
-            22:"權杖1",
-            23:"權杖2",
-            24:"權杖3",
-            25:"權杖4",
-            26:"權杖5",
-            27:"權杖6",
-            28:"權杖7",
-            29:"權杖8",
-            30:"權杖9",
-            31:"權杖10",
-            32:"權杖侍者",
-            33:"權杖騎士",
-            34:"權杖皇后",
-            35:"權杖國王",
-            36:"聖杯1",
-            37:"聖杯2",
-            38:"聖杯3",
-            39:"聖杯4",
-            40:"聖杯5",
-            41:"聖杯6",
-            42:"聖杯7",
-            43:"聖杯8",
-            44:"聖杯9",
-            45:"聖杯10",
-            46:"聖杯侍者",
-            47:"聖杯騎士",
-            48:"聖杯皇后",
-            49:"聖杯國王",
-            50:"寶劍1",
-            51:"寶劍2",
-            52:"寶劍3",
-            53:"寶劍4",
-            54:"寶劍5",
-            55:"寶劍6",
-            56:"寶劍7",
-            57:"寶劍8",
-            58:"寶劍9",
-            59:"寶劍10",
-            60:"寶劍侍者",
-            61:"寶劍騎士",
-            62:"寶劍皇后",
-            63:"寶劍國王",
-            64:"錢幣1",
-            65:"錢幣2",
-            66:"錢幣3",
-            67:"錢幣4",
-            68:"錢幣5",
-            69:"錢幣6",
-            70:"錢幣7",
-            71:"錢幣8",
-            72:"錢幣9",
-            73:"錢幣10",
-            74:"錢幣侍者",
-            75:"錢幣騎士",
-            76:"錢幣皇后",
-            77:"錢幣國王",
-        }
 
-        function initial_card_img_status(){
-            for (var i=1; i<6; i++){
-                document.getElementById("card_" + i).style = "display:none";
-                document.getElementById("card_" + i).src = "card_img/back.jpg";
-
-            }
-        }
-
-        // Initial when choose card spread
-        function choose_card_spread(){
-            // Set all cards to no display and to back-side
-            initial_card_img_status()
-
-            // Get spread and mapping to need how many cards
-            var card_spread = document.getElementById("card").value;
-            var spread_need_cards = {
-                "1_card_spread": 1,
-                "2_card_spread": 2,
-                "3_card_spread": 3,
-                "4_card_spread": 4,
-                "5_card_spread": 5,
-                "6_card_spread": 6,
-                "10_card_spread": 10,
-            }
-
-            // Initainl all card to the back img
-            document.getElementById("card_1").src = "card_img/back.jpg";
-            document.getElementById("card_2").src = "card_img/back.jpg";
-            document.getElementById("card_3").src = "card_img/back.jpg";
-            document.getElementById("card_4").src = "card_img/back.jpg";
-            document.getElementById("card_5").src = "card_img/back.jpg";
-            document.getElementById("card_6").src = "card_img/back.jpg";
-            document.getElementById("card_7").src = "card_img/back.jpg";
-            document.getElementById("card_8").src = "card_img/back.jpg";
-            document.getElementById("card_9").src = "card_img/back.jpg";
-            document.getElementById("card_10").src = "card_img/back.jpg";
-
-            // Initainl last time card display to none
-            document.getElementById("card_1").style = "display:none";
-            document.getElementById("card_2").style = "display:none";
-            document.getElementById("card_3").style = "display:none";
-            document.getElementById("card_4").style = "display:none";
-            document.getElementById("card_5").style = "display:none";
-            document.getElementById("card_6").style = "display:none";
-            document.getElementById("card_7").style = "display:none";
-            document.getElementById("card_8").style = "display:none";
-            document.getElementById("card_9").style = "display:none";
-            document.getElementById("card_10").style = "display:none";
-
-            // Display card back-side with need cards
-            for (var i=1; i<spread_need_cards[card_spread]+1; i++){
-                document.getElementById("card_" + i).style = "";
-            }
-
-            // Clear last time card name list
-            document.getElementById("card_list").style = "display:none";
-
-
-            // if (card_spread == "3_card_spread"){
-            //     document.getElementById("card_spread_description").innerHTML="<h3>時間之流</h3>牌陣順序：[1][2][3]<br>第一張：過去<br>第二張：現在<br>第三張：未來";
-            // }
-            // if(card_spread == "1_card_spread"){
-            //     document.getElementById("card_spread_description").innerHTML="<h3>單張牌</h3>";
-            // }
-            // if(card_spread == "choose_card_spread"){
-            //     document.getElementById("card_spread_description").innerHTML="[4] [5]<br>[2][3]<br>[1]";
-            // }
-        }
-
-        // Get cards when submit
-        function get_random_card() {
-
-            var all_card = 77;
-
-            if (document.getElementById("cbox1").checked){
-                all_card = 22;
-            }
-
-            // Get spread and mapping to need how many cards
-            var card_spread = document.getElementById("card").value;
-            var spread_need_cards = {
-                "1_card_spread": 1,
-                "2_card_spread": 2,
-                "3_card_spread": 3,
-                "4_card_spread": 4,
-                "5_card_spread": 5,
-                "6_card_spread": 6,
-                "10_card_spread": 10,
-            };
-
-            // Set card list
-            var card_list = [];
-            var used_card = [];
-
-            // Counting have how many card now
-            var card_count = 0;
-
-            // If now cards less than need cards
-            while (card_count < spread_need_cards[card_spread]) {
-                // Initial random card value
-                var random_card = 0;
-
-                // Get card from all 78 cards
-                // If only using normal card
-                if (document.getElementById("cbox2").checked){
-                    var random_card = Math.floor(Math.random() * (all_card - 0) + 0);
-                }
-                else{
-                    var random_card = Math.floor(Math.random() * (all_card * 2) ) - all_card;
-                }
-
-                // If do not have this card before
-                if (used_card.includes(random_card) === false){
-                    // Record used card
-                    used_card.push(random_card);
-                    used_card.push(random_card - (random_card * 2));
-
-                    card_list.push(random_card);
-
-                    card_count ++;
-                }
-            }
-
-            var card_name_list = "";
-
-            for (var i=1; i<spread_need_cards[card_spread]+1; i++){
-                // Normal card display
-                if (card_list[i-1] >= 0){
-                    card_name_list = card_name_list + " " + card_name_dict[card_list[i-1]];
-                    document.getElementById("card_" + i).src="card_img/c" + card_list[i-1] + ".jpg";
-                    document.getElementById("card_" + i).style="";
-                }
-                // Reversed card display
-                else{
-                    card_name_list = card_name_list + " " + card_name_dict[Math.abs(card_list[i-1])] + "(逆位)";
-                    document.getElementById("card_" + i).src="card_img/c" + Math.abs(card_list[i-1]) + ".jpg";
-                    document.getElementById("card_" + i).style="transform:rotate(180deg);";
-                }
-            }
-
-            document.getElementById("card_list").style = "";
-            document.getElementById("card_list").innerHTML = card_name_list;
-        }
-
-    </script>
     <body>
-
-        <h1>簡易塔羅抽牌</h1>
-        <label>請選擇牌陣：</label>
-        <select id="card" onchange="choose_card_spread();">
+        <div style="text-align:center">
+        <h1>璞實無華ㄉ塔羅抽牌</h1>
+        <label>請選擇抽牌張數：</label>
+        <select id="card" onchange="initial_card_display_status();">
             <option>--牌數--</option>
-            <option value="1_card_spread">1張牌</option>
-            <option value="2_card_spread">2張牌</option>
-            <option value="3_card_spread">3張牌</option>
-            <option value="5_card_spread">5張牌</option>
-            <option value="10_card_spread">10張牌</option>
+            <option value=1>1張牌</option>
+            <option value=2>2張牌</option>
+            <option value=3>3張牌</option>
+            <option value=4>4張牌</option>
+            <option value=5>5張牌</option>
+            <option value=6>6張牌</option>
+            <option value=7>7張牌</option>
+            <option value=8>8張牌</option>
+            <option value=9>9張牌</option>
+            <option value=10>10張牌</option>
         </select>
 
-        <input type="checkbox" id="cbox1" value="only_major_arcana">
-        <label for="cbox1">僅使用大阿爾克那</label>
-        <input type="checkbox" id="cbox2" value="only_normal_card">
-        <label for="cbox2">僅使用正位</label>
+        <input type="checkbox" id="only_major_arcana">
+        <label for="cbox1">僅使用大牌</label>
+
+        <input type="checkbox" id="using_reversed_card">
+        <label for="cbox2">使用正逆位</label>
 
         <input type="submit" value="抽牌" onclick="get_random_card();">
         <br>
-        <img id="card_1" src="card_img/back.jpg" width="100px" style="display:none"></img>
-        <img id="card_2" src="card_img/back.jpg" width="100px" style="display:none"></img>
-        <img id="card_3" src="card_img/back.jpg" width="100px" style="display:none"></img>
-        <img id="card_4" src="card_img/back.jpg" width="100px" style="display:none"></img>
-        <img id="card_5" src="card_img/back.jpg" width="100px" style="display:none"></img>
-        <img id="card_6" src="card_img/back.jpg" width="100px" style="display:none"></img>
-        <img id="card_7" src="card_img/back.jpg" width="100px" style="display:none"></img>
-        <img id="card_8" src="card_img/back.jpg" width="100px" style="display:none"></img>
-        <img id="card_9" src="card_img/back.jpg" width="100px" style="display:none"></img>
-        <img id="card_10" src="card_img/back.jpg" width="100px" style="display:none"></img>
-        <p id="card_list" style="display:none"></p>
-        <!-- <p id="card_debug"></p> -->
         <br>
-        牌陣說明：
-        <p id="card_spread_description"></p>
 
+        <table style="width:100%">
+            <tr>
+                <th><img id="card_1" src="card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_2" src="card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_3" src="card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_4" src="card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_5" src="card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_6" src="card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_7" src="card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_8" src="card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_9" src="card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_10" src="card_img/back.jpg" width="100px" style="display:none"></img></th>
+            </tr>
+            <tr>
+                <th><p id="card_name_1" style="display:none"></p></th>
+                <th><p id="card_name_2" style="display:none"></p></th>
+                <th><p id="card_name_3" style="display:none"></p></th>
+                <th><p id="card_name_4" style="display:none"></p></th>
+                <th><p id="card_name_5" style="display:none"></p></th>
+                <th><p id="card_name_6" style="display:none"></p></th>
+                <th><p id="card_name_7" style="display:none"></p></th>
+                <th><p id="card_name_8" style="display:none"></p></th>
+                <th><p id="card_name_9" style="display:none"></p></th>
+                <th><p id="card_name_10" style="display:none"></p></th>
+            </tr>
+          </table>
+          </div>
 </body>
+
+<script>
+    // card number and name mapping
+    var card_name_dict={
+        0:"愚者",
+        1:"魔法師",
+        2:"女教皇",
+        3:"女帝",
+        4:"皇帝",
+        5:"教皇",
+        6:"戀人",
+        7:"戰車",
+        8:"力量",
+        9:"隱者",
+        10:"命運之輪",
+        11:"正義",
+        12:"吊人",
+        13:"死神",
+        14:"節制",
+        15:"惡魔",
+        16:"高塔",
+        17:"星星",
+        18:"月亮",
+        19:"太陽",
+        20:"審判",
+        21:"世界",
+        22:"權杖1",
+        23:"權杖2",
+        24:"權杖3",
+        25:"權杖4",
+        26:"權杖5",
+        27:"權杖6",
+        28:"權杖7",
+        29:"權杖8",
+        30:"權杖9",
+        31:"權杖10",
+        32:"權杖侍者",
+        33:"權杖騎士",
+        34:"權杖皇后",
+        35:"權杖國王",
+        36:"聖杯1",
+        37:"聖杯2",
+        38:"聖杯3",
+        39:"聖杯4",
+        40:"聖杯5",
+        41:"聖杯6",
+        42:"聖杯7",
+        43:"聖杯8",
+        44:"聖杯9",
+        45:"聖杯10",
+        46:"聖杯侍者",
+        47:"聖杯騎士",
+        48:"聖杯皇后",
+        49:"聖杯國王",
+        50:"寶劍1",
+        51:"寶劍2",
+        52:"寶劍3",
+        53:"寶劍4",
+        54:"寶劍5",
+        55:"寶劍6",
+        56:"寶劍7",
+        57:"寶劍8",
+        58:"寶劍9",
+        59:"寶劍10",
+        60:"寶劍侍者",
+        61:"寶劍騎士",
+        62:"寶劍皇后",
+        63:"寶劍國王",
+        64:"錢幣1",
+        65:"錢幣2",
+        66:"錢幣3",
+        67:"錢幣4",
+        68:"錢幣5",
+        69:"錢幣6",
+        70:"錢幣7",
+        71:"錢幣8",
+        72:"錢幣9",
+        73:"錢幣10",
+        74:"錢幣侍者",
+        75:"錢幣騎士",
+        76:"錢幣皇后",
+        77:"錢幣國王",
+    }
+
+    function initial_card_display_status(){
+        // Set all cards to no display and to back-side
+        var taken_cards = document.getElementById("card").value;
+
+        for (var i=1; i<=10; i++){
+            var element_id = "card_" + i
+            document.getElementById(element_id).style = "display:none";
+            document.getElementById("card_name_" + i).style = "display:none";
+        }
+
+        for (var i=1; i<=taken_cards; i++){
+            var element_id = "card_" + i
+            document.getElementById(element_id).removeAttribute("style");
+            document.getElementById(element_id).src = "card_img/back.jpg";
+        }
+    }
+
+    // Get cards when submit
+    function get_random_card() {
+
+        // Card range from 0 ~ 77 (78 cards)
+        var all_card = 77;
+
+        if (document.getElementById("only_major_arcana").checked){
+            all_card = 21;
+        }
+
+        // Get spread and mapping to need how many cards
+        var need_cards = document.getElementById("card").value;
+
+        // Set card list
+        var card_list = [];
+        var used_card = [];
+
+        // Counting have how many card now
+        var card_count = 0;
+
+        // Pull a card till get all need cards
+        while (card_count < need_cards) {
+
+            var random_card = 0;
+
+            // If need to get reversed cards
+            if (document.getElementById("using_reversed_card").checked){
+                var random_card = Math.floor(Math.random() * (all_card * 2) ) - all_card;
+            }
+            else{
+                var random_card = Math.floor(Math.random() * (all_card - 0) + 0);
+            }
+
+            // If do not pull this card before, add to card_list
+            if (used_card.includes(random_card) === false){
+                // Record used card (normal and reversed)
+                used_card.push(random_card);
+                used_card.push(random_card - (random_card * 2));
+
+                card_list.push(random_card);
+                card_count ++;
+            }
+        }
+
+        for (var i=1; i<=need_cards; i++){
+
+            var element_id = "card_" + i
+            var name_element_id = "card_name_" + i
+
+            // Normal card display
+            if (card_list[i-1] >= 0){
+                card_name = card_name_dict[card_list[i-1]];
+                document.getElementById(element_id).src="card_img/c" + card_list[i-1] + ".jpg";
+                document.getElementById(element_id).style="";
+            }
+            // Reversed card display
+            else{
+                card_name = card_name_dict[Math.abs(card_list[i-1])] + "(逆位)";
+                document.getElementById(element_id).src="card_img/c" + Math.abs(card_list[i-1]) + ".jpg";
+                document.getElementById(element_id).style="transform:rotate(180deg);";
+            }
+
+            document.getElementById(name_element_id).removeAttribute("style");
+            document.getElementById(name_element_id).innerHTML = card_name;
+        }
+    }
+</script>
 </html>
