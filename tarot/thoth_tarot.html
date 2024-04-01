@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>簡易托特塔羅抽牌</title>
+</head>
+
+<body>
+    <div style="text-align:center">
+        <h1>托特塔羅抽牌</h1>
+        <label>請選擇抽牌張數：</label>
+        <select id="card" onchange="initial_card_display_status();">
+            <option>--牌數--</option>
+            <option value=1>1張牌</option>
+            <option value=2>2張牌</option>
+            <option value=3>3張牌</option>
+            <option value=4>4張牌</option>
+            <option value=5>5張牌</option>
+            <option value=6>6張牌</option>
+            <option value=7>7張牌</option>
+            <option value=8>8張牌</option>
+            <option value=9>9張牌</option>
+            <option value=10>10張牌</option>
+        </select>
+
+        <input type="checkbox" id="only_major_arcana" onclick="block_conflict_select();">
+        <label id="label_only_major_arcana" for="cbox1">僅使用大牌</label>
+
+        <input type="checkbox" id="only_minor_arcana" onclick="block_conflict_select();">
+        <label id="label_only_minor_arcana" for="cbox2">僅使用小牌</label>
+
+        <input type="checkbox" id="only_court_cards" onclick="block_conflict_select();">
+        <label id="label_only_court_cards" for="cbox3">僅使用宮廷牌</label>
+
+        <input type="submit" value="抽牌" onclick="get_random_card();">
+        <br>
+        <br>
+
+        <table style="width:100%">
+            <tr>
+                <th><img id="card_1" src="thoth_card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_2" src="thoth_card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_3" src="thoth_card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_4" src="thoth_card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_5" src="thoth_card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_6" src="thoth_card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_7" src="thoth_card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_8" src="thoth_card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_9" src="thoth_card_img/back.jpg" width="100px" style="display:none"></img></th>
+                <th><img id="card_10" src="thoth_card_img/back.jpg" width="100px" style="display:none"></img></th>
+            </tr>
+            <tr>
+                <th>
+                    <p id="card_name_1" style="display:none"></p>
+                </th>
+                <th>
+                    <p id="card_name_2" style="display:none"></p>
+                </th>
+                <th>
+                    <p id="card_name_3" style="display:none"></p>
+                </th>
+                <th>
+                    <p id="card_name_4" style="display:none"></p>
+                </th>
+                <th>
+                    <p id="card_name_5" style="display:none"></p>
+                </th>
+                <th>
+                    <p id="card_name_6" style="display:none"></p>
+                </th>
+                <th>
+                    <p id="card_name_7" style="display:none"></p>
+                </th>
+                <th>
+                    <p id="card_name_8" style="display:none"></p>
+                </th>
+                <th>
+                    <p id="card_name_9" style="display:none"></p>
+                </th>
+                <th>
+                    <p id="card_name_10" style="display:none"></p>
+                </th>
+            </tr>
+        </table>
+    </div>
+</body>
+
+<script>
+    // card number and name mapping
+    var card_name_dict = {
+        0: "愚者",
+        1: "魔法師",
+        2: "女祭司",
+        3: "皇后",
+        4: "皇帝",
+        5: "教皇",
+        6: "戀人",
+        7: "戰車",
+        8: "調節",
+        9: "隱者",
+        10: "命運",
+        11: "慾望",
+        12: "吊人",
+        13: "死神",
+        14: "藝術",
+        15: "惡魔",
+        16: "高塔",
+        17: "星星",
+        18: "月亮",
+        19: "太陽",
+        20: "新紀元",
+        21: "宇宙",
+        22: "權杖 Ace",
+        23: "權杖2",
+        24: "權杖3",
+        25: "權杖4",
+        26: "權杖5",
+        27: "權杖6",
+        28: "權杖7",
+        29: "權杖8",
+        30: "權杖9",
+        31: "權杖10",
+        32: "聖杯 Ace",
+        33: "聖杯2",
+        34: "聖杯3",
+        35: "聖杯4",
+        36: "聖杯5",
+        37: "聖杯6",
+        38: "聖杯7",
+        39: "聖杯8",
+        40: "聖杯9",
+        41: "聖杯10",
+        42: "寶劍 Ace",
+        43: "寶劍2",
+        44: "寶劍3",
+        45: "寶劍4",
+        46: "寶劍5",
+        47: "寶劍6",
+        48: "寶劍7",
+        49: "寶劍8",
+        50: "寶劍9",
+        51: "寶劍10",
+        52: "圓盤 Ace",
+        53: "圓盤2",
+        54: "圓盤3",
+        55: "圓盤4",
+        56: "圓盤5",
+        57: "圓盤6",
+        58: "圓盤7",
+        59: "圓盤8",
+        60: "圓盤9",
+        61: "圓盤10",
+        62: "權杖騎士",
+        63: "權杖皇后",
+        64: "權杖王子",
+        65: "權杖公主",
+        66: "聖杯騎士",
+        67: "聖杯皇后",
+        68: "聖杯王子",
+        69: "聖杯公主",
+        70: "寶劍騎士",
+        71: "寶劍皇后",
+        72: "寶劍王子",
+        73: "寶劍公主",
+        74: "圓盤騎士",
+        75: "圓盤皇后",
+        76: "圓盤王子",
+        77: "圓盤公主",
+    }
+
+    function initial_card_display_status() {
+        // Set all cards to no display and to back-side
+        var taken_cards = document.getElementById("card").value;
+
+        for (var i = 1; i <= 10; i++) {
+            var element_id = "card_" + i
+            document.getElementById(element_id).style = "display:none";
+            document.getElementById("card_name_" + i).style = "display:none";
+        }
+
+        for (var i = 1; i <= taken_cards; i++) {
+            var element_id = "card_" + i
+            document.getElementById(element_id).removeAttribute("style");
+            document.getElementById(element_id).src = "thoth_card_img/back.jpg";
+        }
+    }
+    function block_conflict_select() {
+        if (document.getElementById("only_major_arcana").checked === false) {
+            document.getElementById("only_minor_arcana").removeAttribute("style");
+            document.getElementById("label_only_minor_arcana").removeAttribute("style");
+
+            document.getElementById("only_court_cards").removeAttribute("style");
+            document.getElementById("label_only_court_cards").removeAttribute("style");
+        }
+        if (document.getElementById("only_minor_arcana").checked === false) {
+            document.getElementById("only_major_arcana").removeAttribute("style");
+            document.getElementById("label_only_major_arcana").removeAttribute("style");
+
+            document.getElementById("only_court_cards").removeAttribute("style");
+            document.getElementById("label_only_court_cards").removeAttribute("style");
+        }
+        if (document.getElementById("only_court_cards").checked === false) {
+            document.getElementById("only_major_arcana").removeAttribute("style");
+            document.getElementById("label_only_major_arcana").removeAttribute("style");
+
+            document.getElementById("only_minor_arcana").removeAttribute("style");
+            document.getElementById("label_only_minor_arcana").removeAttribute("style");
+        }
+
+
+        if (document.getElementById("only_major_arcana").checked) {
+            document.getElementById("only_minor_arcana").style = "display:none";
+            document.getElementById("label_only_minor_arcana").style = "display:none";
+            document.getElementById("only_court_cards").style = "display:none";
+            document.getElementById("label_only_court_cards").style = "display:none";
+
+        } else if (document.getElementById("only_minor_arcana").checked) {
+            document.getElementById("only_major_arcana").style = "display:none";
+            document.getElementById("label_only_major_arcana").style = "display:none";
+
+            document.getElementById("only_court_cards").style = "display:none";
+            document.getElementById("label_only_court_cards").style = "display:none";
+
+        } else if (document.getElementById("only_court_cards").checked) {
+            document.getElementById("only_major_arcana").style = "display:none";
+            document.getElementById("label_only_major_arcana").style = "display:none";
+
+            document.getElementById("only_minor_arcana").style = "display:none";
+            document.getElementById("label_only_minor_arcana").style = "display:none";
+        }
+    }
+    // Get cards when submit
+    function get_random_card() {
+        // Mar 0-21
+        // Min 22-61
+        // court 62-77
+
+        // Card range from 0 ~ 77 (78 cards)
+        var star_card = 0;
+        var end_card = 77;
+
+        if (document.getElementById("only_major_arcana").checked) {
+            // document.getElementById("only_minor_arcana").style = "display:none";
+            // document.getElementById("only_court_cards").style = "display:none";
+            end_card = 21;
+        }
+        else if (document.getElementById("only_minor_arcana").checked) {
+            // document.getElementById("only_major_arcana").style = "display:none";
+            // document.getElementById("only_court_cards").style = "display:none";
+            star_card = 22;
+            end_card = 61;
+
+
+        } else if (document.getElementById("only_court_cards").checked) {
+            // document.getElementById("only_major_arcana").style = "display:none";
+            // document.getElementById("only_minor_arcana").style = "display:none";
+            star_card = 62;
+            end_card = 77;
+        }
+
+
+        // Get spread and mapping to need how many cards
+        var need_cards = document.getElementById("card").value;
+
+        // Set card list
+        var card_list = [];
+        var used_card = [];
+
+        // Counting have how many card now
+        var card_count = 0;
+
+        // Pull a card till get all need cards
+        while (card_count < need_cards) {
+            var random_card = Math.floor(Math.random() * (end_card - star_card) + star_card);
+            console.log(random_card)
+
+
+            // If do not pull this card before, add to card_list
+            if (used_card.includes(random_card)) {
+                console.log("DPU", random_card)
+
+            }else {
+                // Record used card
+                used_card.push(random_card);
+                card_list.push(random_card);
+                card_count++;
+            }
+        }
+
+        for (var i=1; i<=need_cards; i++){
+
+            var element_id = "card_" + i
+            var name_element_id = "card_name_" + i
+
+            // Normal card display
+            card_name = card_name_dict[card_list[i-1]];
+            document.getElementById(element_id).src="thoth_card_img/c" + card_list[i-1] + ".jpg";
+            document.getElementById(element_id).style="";
+
+
+            document.getElementById(name_element_id).removeAttribute("style");
+            document.getElementById(name_element_id).innerHTML = card_name;
+        }
+    }
+</script>
+
+</html>
