@@ -14,7 +14,8 @@
             font-family: 'Roboto Condensed', sans-serif;
             font-size: 25px;
             text-align: center;
-            padding-top: 5%;
+            padding: 5% 20% 5% 20%;
+            /* padding-top: 5%; */
             min-height: 100%;
             font-weight: 300;
             color: #2a3039;
@@ -22,12 +23,15 @@
             position: relative;
         }
         section h1 {
+            padding-bottom: 15px;
             font-weight: 700;
             font-size: 35px;
         }
 
         section p {
             font-size: 18px;
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
 
         #home, #contact {
