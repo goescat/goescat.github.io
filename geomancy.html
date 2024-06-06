@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>地占-盾盤</title>
+</head>
+<style>
+    table {
+        table-layout: fixed;
+        width: 100%;
+        /* height: 100%; */
+    }
+
+    tr {
+        height: 200px;
+    }
+
+    th {
+        border: 2px solid #537759;
+        /* height: 100px; */
+    }
+
+    td {
+        text-align: center;
+
+    }
+</style>
+
+<body>
+
+    <table>
+        <tr>
+            <th>8
+                <h4 id="8th_fire" style="display:none"></h4>
+                <h4 id="8th_air" style="display:none"></h4>
+                <h4 id="8th_water" style="display:none"></h4>
+                <h4 id="8th_erath" style="display:none"></h4>
+            </th>
+            <th>7
+                <h4 id="7th_fire" style="display:none"></h4>
+                <h4 id="7th_air" style="display:none"></h4>
+                <h4 id="7th_water" style="display:none"></h4>
+                <h4 id="7th_erath" style="display:none"></h4>
+            </th>
+            <th>6
+                <h4 id="6th_fire" style="display:none"></h4>
+                <h4 id="6th_air" style="display:none"></h4>
+                <h4 id="6th_water" style="display:none"></h4>
+                <h4 id="6th_erath" style="display:none"></h4>
+            </th>
+            <th>5
+                <h4 id="5th_fire" style="display:none"></h4>
+                <h4 id="5th_air" style="display:none"></h4>
+                <h4 id="5th_water" style="display:none"></h4>
+                <h4 id="5th_erath" style="display:none"></h4>
+            </th>
+            <th>母卦<button id="4th" onclick="get_random_4th()" style="display:none">隨機起卦</button>
+
+                <label class="input_4th" for="usr_input_4th_f">
+                    <select class="input_4th" id="usr_input_4th_f" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_4th" for="usr_input_4th_a">
+                    <select class="input_4th" id="usr_input_4th_a" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_4th" for="usr_input_4th_w">
+                    <select class="input_4th" id="usr_input_4th_w" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_4th" for="usr_input_4th_e">
+                    <select class="input_4th" id="usr_input_4th_e" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                    <input id="usr_input_4th_f_in" type="submit" onclick="get_usr_4_ip();" style="display:none" />
+                </label>
+
+                <h4 id="4th_fire" style="display:none"></h4>
+                <h4 id="4th_air" style="display:none"></h4>
+                <h4 id="4th_water" style="display:none"></h4>
+                <h4 id="4th_erath" style="display:none"></h4>
+            </th>
+            <th>母卦<button id="3rd" onclick="get_random_3rd()" style="display:none">隨機起卦</button>
+                <label class="input_3rd" for="usr_input_3rd_f">
+                    <select class="input_3rd" id="usr_input_3rd_f" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_3rd" for="usr_input_3rd_a">
+                    <select class="input_3rd" id="usr_input_3rd_a" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_3rd" for="usr_input_3rd_w">
+                    <select class="input_3rd" id="usr_input_3rd_w" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_3rd" for="usr_input_3rd_e">
+                    <select class="input_3rd" id="usr_input_3rd_e" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                    <input id="usr_input_3rd_f_in" type="submit" onclick="get_usr_3_ip();" style="display:none" />
+                </label>
+
+                <h4 id="3rd_fire" style="display:none"></h4>
+                <h4 id="3rd_air" style="display:none"></h4>
+                <h4 id="3rd_water" style="display:none"></h4>
+                <h4 id="3rd_erath" style="display:none"></h4>
+            </th>
+            <th>母卦<button id="2nd" onclick="get_random_2nd()" style="display:none">隨機起卦</button>
+
+                <label class="input_2nd" for="usr_input_2nd_f">
+                    <select class="input_2nd" id="usr_input_2nd_f" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_2nd" for="usr_input_2nd_a">
+                    <select class="input_2nd" id="usr_input_2nd_a" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_2nd" for="usr_input_2nd_w">
+                    <select class="input_2nd" id="usr_input_2nd_w" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_2nd" for="usr_input_2nd_e">
+                    <select class="input_2nd" id="usr_input_2nd_e" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                    <input id="usr_input_2nd_f_in" type="submit" onclick="get_usr_2_ip();" style="display:none" />
+                </label>
+
+                <h4 id="2nd_fire" style="display:none"></h4>
+                <h4 id="2nd_air" style="display:none"></h4>
+                <h4 id="2nd_water" style="display:none"></h4>
+                <h4 id="2nd_erath" style="display:none"></h4>
+            </th>
+            <th>母卦<button id="1st" onclick="get_random_1st()">隨機起卦</button>
+                <button id="1st_ip" onclick="user_input()">手動輸入</button>
+
+                <label class="input_1st" for="usr_input_1st_f">
+                    <select class="input_1st" id="usr_input_1st_f" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_1st" for="usr_input_1st_a">
+                    <select class="input_1st" id="usr_input_1st_a" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_1st" for="usr_input_1st_w">
+                    <select class="input_1st" id="usr_input_1st_w" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                </label>
+                <br>
+                <label class="input_1st" for="usr_input_1st_e">
+                    <select class="input_1st" id="usr_input_1st_e" style="display:none">
+                        <option>--輸入--</option>
+                        <option selected value=0>陰</option>
+                        <option value=1>陽</option>
+                    </select>
+                    <input id="usr_input_1st_f_in" type="submit" onclick="get_usr_1_ip();" style="display:none" />
+                </label>
+
+                <h4 id="1st_fire" style="display:none"></h4>
+                <h4 id="1st_air" style="display:none"></h4>
+                <h4 id="1st_water" style="display:none"></h4>
+                <h4 id="1st_erath" style="display:none"></h4>
+            </th>
+
+        </tr>
+        <tr>
+            <th colspan="2">12
+                <h4 id="12th_fire" style="display:none"></h4>
+                <h4 id="12th_air" style="display:none"></h4>
+                <h4 id="12th_water" style="display:none"></h4>
+                <h4 id="12th_erath" style="display:none"></h4>
+            </th>
+            <th colspan="2">11
+                <h4 id="11th_fire" style="display:none"></h4>
+                <h4 id="11th_air" style="display:none"></h4>
+                <h4 id="11th_water" style="display:none"></h4>
+                <h4 id="11th_erath" style="display:none"></h4>
+            </th>
+            <th colspan="2">10
+                <h4 id="10th_fire" style="display:none"></h4>
+                <h4 id="10th_air" style="display:none"></h4>
+                <h4 id="10th_water" style="display:none"></h4>
+                <h4 id="10th_erath" style="display:none"></h4>
+            </th>
+            <th colspan="2">9
+                <h4 id="9th_fire" style="display:none"></h4>
+                <h4 id="9th_air" style="display:none"></h4>
+                <h4 id="9th_water" style="display:none"></h4>
+                <h4 id="9th_erath" style="display:none"></h4>
+            </th>
+
+        </tr>
+        <tr>
+            <th colspan="4">佐證人
+                <h4 id="14th_fire" style="display:none"></h4>
+                <h4 id="14th_air" style="display:none"></h4>
+                <h4 id="14th_water" style="display:none"></h4>
+                <h4 id="14th_erath" style="display:none"></h4>
+            </th>
+            <th colspan="4">右證人
+                <h4 id="13th_fire" style="display:none"></h4>
+                <h4 id="13th_air" style="display:none"></h4>
+                <h4 id="13th_water" style="display:none"></h4>
+                <h4 id="13th_erath" style="display:none"></h4>
+            </th>
+        </tr>
+        <tr>
+            <th colspan="8">法官
+                <h4 id="15th_fire" style="display:none"></h4>
+                <h4 id="15th_air" style="display:none"></h4>
+                <h4 id="15th_water" style="display:none"></h4>
+                <h4 id="15th_erath" style="display:none"></h4>
+            </th>
+        </tr>
+        <tr>
+            <th colspan="8">16
+                <h4 id="16th_fire" style="display:none"></h4>
+                <h4 id="16th_air" style="display:none"></h4>
+                <h4 id="16th_water" style="display:none"></h4>
+                <h4 id="16th_erath" style="display:none"></h4>
+            </th>
+        </tr>
+    </table>
+</body>
+
+<script>
+    var geo_dict = {
+        "1": [0, 0, 0, 0],
+        "2": [0, 0, 0, 0],
+        "3": [0, 0, 0, 0],
+        "4": [0, 0, 0, 0],
+        "5": [0, 0, 0, 0],
+        "6": [0, 0, 0, 0],
+        "7": [0, 0, 0, 0],
+        "8": [0, 0, 0, 0],
+        "9": [0, 0, 0, 0],
+        "10": [0, 0, 0, 0],
+        "11": [0, 0, 0, 0],
+        "12": [0, 0, 0, 0],
+        "13": [0, 0, 0, 0],
+        "14": [0, 0, 0, 0],
+        "15": [0, 0, 0, 0],
+        "16": [0, 0, 0, 0]
+    }
+
+
+
+
+    function user_input() {
+        var cls = document.getElementsByClassName("input_1st");
+
+        for (var i = 0; i < cls.length; i++) {
+            cls[i].removeAttribute("style");
+        }
+
+        document.getElementById("1st").style = "display:none";
+        document.getElementById("1st_ip").style = "display:none";
+        document.getElementById("usr_input_1st_f_in").removeAttribute("style");
+
+        var cls = document.getElementsByClassName("input_2nd");
+
+        for (var i = 0; i < cls.length; i++) {
+            cls[i].removeAttribute("style");
+        }
+
+
+        var cls = document.getElementsByClassName("input_3rd");
+
+        for (var i = 0; i < cls.length; i++) {
+            cls[i].removeAttribute("style");
+        }
+
+
+        var cls = document.getElementsByClassName("input_4th");
+
+        for (var i = 0; i < cls.length; i++) {
+            cls[i].removeAttribute("style");
+        }
+
+    }
+
+    function get_usr_1_ip() {
+        document.getElementById("usr_input_2nd_f_in").removeAttribute("style");
+
+        var cls = document.getElementsByClassName("input_1st");
+
+        for (var i = 0; i < cls.length; i++) {
+            cls[i].style = "display:none";
+        }
+
+        geo_dict["1"][0] = parseInt(document.getElementById("usr_input_1st_f").value);
+        geo_dict["1"][1] = parseInt(document.getElementById("usr_input_1st_a").value);
+        geo_dict["1"][2] = parseInt(document.getElementById("usr_input_1st_w").value);
+        geo_dict["1"][3] = parseInt(document.getElementById("usr_input_1st_e").value);
+
+        document.getElementById("1st_fire").removeAttribute("style");
+        if (geo_dict["1"][0]) {
+            document.getElementById("1st_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("1st_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("1st_air").removeAttribute("style");
+        if (geo_dict["1"][1]) {
+            document.getElementById("1st_air").innerHTML = " o ";
+        } else {
+            document.getElementById("1st_air").innerHTML = "o o";
+        }
+
+        document.getElementById("1st_water").removeAttribute("style");
+        if (geo_dict["1"][2]) {
+            document.getElementById("1st_water").innerHTML = " o ";
+        } else {
+            document.getElementById("1st_water").innerHTML = "o o";
+        }
+
+        document.getElementById("1st_erath").removeAttribute("style");
+        if (geo_dict["1"][3]) {
+            document.getElementById("1st_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("1st_erath").innerHTML = "o o";
+        }
+
+    }
+
+    function get_usr_2_ip() {
+        document.getElementById("usr_input_3rd_f_in").removeAttribute("style");
+
+        var cls = document.getElementsByClassName("input_2nd");
+
+        for (var i = 0; i < cls.length; i++) {
+            cls[i].style = "display:none";
+        }
+
+        geo_dict["2"][0] = parseInt(document.getElementById("usr_input_2nd_f").value);
+        geo_dict["2"][1] = parseInt(document.getElementById("usr_input_2nd_a").value);
+        geo_dict["2"][2] = parseInt(document.getElementById("usr_input_2nd_w").value);
+        geo_dict["2"][3] = parseInt(document.getElementById("usr_input_2nd_e").value);
+
+
+        document.getElementById("2nd_fire").removeAttribute("style");
+        if (geo_dict["2"][0]) {
+            document.getElementById("2nd_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("2nd_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("2nd_air").removeAttribute("style");
+        if (geo_dict["2"][1]) {
+            document.getElementById("2nd_air").innerHTML = " o ";
+        } else {
+            document.getElementById("2nd_air").innerHTML = "o o";
+        }
+
+        document.getElementById("2nd_water").removeAttribute("style");
+        if (geo_dict["2"][2]) {
+            document.getElementById("2nd_water").innerHTML = " o ";
+        } else {
+            document.getElementById("2nd_water").innerHTML = "o o";
+        }
+
+        document.getElementById("2nd_erath").removeAttribute("style");
+        if (geo_dict["2"][3]) {
+            document.getElementById("2nd_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("2nd_erath").innerHTML = "o o";
+        }
+    }
+
+    function get_usr_3_ip() {
+        document.getElementById("usr_input_4th_f_in").removeAttribute("style");
+
+        var cls = document.getElementsByClassName("input_3rd");
+
+        for (var i = 0; i < cls.length; i++) {
+            cls[i].style = "display:none";
+        }
+
+        geo_dict["3"][0] = parseInt(document.getElementById("usr_input_3rd_f").value);
+        geo_dict["3"][1] = parseInt(document.getElementById("usr_input_3rd_a").value);
+        geo_dict["3"][2] = parseInt(document.getElementById("usr_input_3rd_w").value);
+        geo_dict["3"][3] = parseInt(document.getElementById("usr_input_3rd_e").value);
+
+
+        document.getElementById("3rd_fire").removeAttribute("style");
+        if (geo_dict["3"][0]) {
+            document.getElementById("3rd_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("3rd_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("3rd_air").removeAttribute("style");
+        if (geo_dict["3"][1]) {
+            document.getElementById("3rd_air").innerHTML = " o ";
+        } else {
+            document.getElementById("3rd_air").innerHTML = "o o";
+        }
+
+        document.getElementById("3rd_water").removeAttribute("style");
+        if (geo_dict["3"][2]) {
+            document.getElementById("3rd_water").innerHTML = " o ";
+        } else {
+            document.getElementById("3rd_water").innerHTML = "o o";
+        }
+
+        document.getElementById("3rd_erath").removeAttribute("style");
+        if (geo_dict["3"][3]) {
+            document.getElementById("3rd_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("3rd_erath").innerHTML = "o o";
+        }
+
+    }
+
+    function get_usr_4_ip() {
+        var cls = document.getElementsByClassName("input_4th");
+
+        for (var i = 0; i < cls.length; i++) {
+            cls[i].style = "display:none";
+        }
+        geo_dict["4"][0] = parseInt(document.getElementById("usr_input_4th_f").value);
+        geo_dict["4"][1] = parseInt(document.getElementById("usr_input_4th_a").value);
+        geo_dict["4"][2] = parseInt(document.getElementById("usr_input_4th_w").value);
+        geo_dict["4"][3] = parseInt(document.getElementById("usr_input_4th_e").value);
+
+        document.getElementById("4th_fire").removeAttribute("style");
+        if (geo_dict["4"][0]) {
+            document.getElementById("4th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("4th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("4th_air").removeAttribute("style");
+        if (geo_dict["4"][1]) {
+            document.getElementById("4th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("4th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("4th_water").removeAttribute("style");
+        if (geo_dict["4"][2]) {
+            document.getElementById("4th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("4th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("4th_erath").removeAttribute("style");
+        if (geo_dict["4"][3]) {
+            document.getElementById("4th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("4th_erath").innerHTML = "o o";
+        }
+
+        // console.log(geo_dict);
+        get_5th();
+    }
+
+    function get_random_1st() {
+        document.getElementById("1st_ip").style = "display:none";
+
+        for (var i = 0; i < 4; i++) {
+            geo_dict["1"][i] = Math.floor(Math.random() * 2);
+        }
+
+        // var random_fire = Math.floor(Math.random() * 2);
+        // var random_air = Math.floor(Math.random() * 2);
+        // var random_water = Math.floor(Math.random() * 2);
+        // var random_erath = Math.floor(Math.random() * 2);
+
+        // geo_dict["1"][0] = random_fire;
+        // geo_dict["1"][1] = random_air;
+        // geo_dict["1"][2] = random_water;
+        // geo_dict["1"][3] = random_erath;
+
+        document.getElementById("1st_fire").removeAttribute("style");
+
+        if (geo_dict["1"][0]) {
+            document.getElementById("1st_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("1st_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("1st_air").removeAttribute("style");
+        if (geo_dict["1"][1]) {
+            document.getElementById("1st_air").innerHTML = " o ";
+        } else {
+            document.getElementById("1st_air").innerHTML = "o o";
+        }
+
+        document.getElementById("1st_water").removeAttribute("style");
+        if (geo_dict["1"][2]) {
+            document.getElementById("1st_water").innerHTML = " o ";
+        } else {
+            document.getElementById("1st_water").innerHTML = "o o";
+        }
+
+        document.getElementById("1st_erath").removeAttribute("style");
+        if (geo_dict["1"][3]) {
+            document.getElementById("1st_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("1st_erath").innerHTML = "o o";
+        }
+
+        document.getElementById("1st").style = "display:none";
+        document.getElementById("2nd").removeAttribute("style");
+    }
+
+    function get_random_2nd() {
+        for (var i = 0; i < 4; i++) {
+            geo_dict["2"][i] = Math.floor(Math.random() * 2);
+        }
+        // var random_fire = Math.floor(Math.random() * 2);
+        // var random_air = Math.floor(Math.random() * 2);
+        // var random_water = Math.floor(Math.random() * 2);
+        // var random_erath = Math.floor(Math.random() * 2);
+
+
+        document.getElementById("2nd_fire").removeAttribute("style");
+        if (geo_dict["2"][0]) {
+            document.getElementById("2nd_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("2nd_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("2nd_air").removeAttribute("style");
+        if (geo_dict["2"][1]) {
+            document.getElementById("2nd_air").innerHTML = " o ";
+        } else {
+            document.getElementById("2nd_air").innerHTML = "o o";
+        }
+
+        document.getElementById("2nd_water").removeAttribute("style");
+        if (geo_dict["2"][2]) {
+            document.getElementById("2nd_water").innerHTML = " o ";
+        } else {
+            document.getElementById("2nd_water").innerHTML = "o o";
+        }
+
+        document.getElementById("2nd_erath").removeAttribute("style");
+        if (geo_dict["2"][3]) {
+            document.getElementById("2nd_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("2nd_erath").innerHTML = "o o";
+        }
+
+        document.getElementById("2nd").style = "display:none";
+        document.getElementById("3rd").removeAttribute("style");
+    }
+
+    function get_random_3rd() {
+        for (var i = 0; i < 4; i++) {
+            geo_dict["3"][i] = Math.floor(Math.random() * 2);
+        }
+
+        // var random_fire = Math.floor(Math.random() * 2);
+        // var random_air = Math.floor(Math.random() * 2);
+        // var random_water = Math.floor(Math.random() * 2);
+        // var random_erath = Math.floor(Math.random() * 2);
+
+        document.getElementById("3rd_fire").removeAttribute("style");
+        if (geo_dict["3"][0]) {
+            document.getElementById("3rd_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("3rd_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("3rd_air").removeAttribute("style");
+        if (geo_dict["3"][1]) {
+            document.getElementById("3rd_air").innerHTML = " o ";
+        } else {
+            document.getElementById("3rd_air").innerHTML = "o o";
+        }
+
+        document.getElementById("3rd_water").removeAttribute("style");
+        if (geo_dict["3"][2]) {
+            document.getElementById("3rd_water").innerHTML = " o ";
+        } else {
+            document.getElementById("3rd_water").innerHTML = "o o";
+        }
+
+        document.getElementById("3rd_erath").removeAttribute("style");
+        if (geo_dict["3"][3]) {
+            document.getElementById("3rd_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("3rd_erath").innerHTML = "o o";
+        }
+
+        document.getElementById("3rd").style = "display:none";
+        document.getElementById("4th").removeAttribute("style");
+    }
+
+    function get_random_4th() {
+        for (var i = 0; i < 4; i++) {
+            geo_dict["4"][i] = Math.floor(Math.random() * 2);
+        }
+
+        var random_fire = Math.floor(Math.random() * 2);
+        var random_air = Math.floor(Math.random() * 2);
+        var random_water = Math.floor(Math.random() * 2);
+        var random_erath = Math.floor(Math.random() * 2);
+
+        document.getElementById("4th_fire").removeAttribute("style");
+        if (geo_dict["4"][0]) {
+            document.getElementById("4th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("4th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("4th_air").removeAttribute("style");
+        if (geo_dict["4"][1]) {
+            document.getElementById("4th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("4th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("4th_water").removeAttribute("style");
+        if (geo_dict["4"][2]) {
+            document.getElementById("4th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("4th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("4th_erath").removeAttribute("style");
+        if (geo_dict["4"][3]) {
+            document.getElementById("4th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("4th_erath").innerHTML = "o o";
+        }
+
+        document.getElementById("4th").style = "display:none";
+
+        get_5th();
+    }
+
+    function get_5th() {
+        geo_dict["5"][0] = geo_dict["1"][0];
+        geo_dict["5"][1] = geo_dict["2"][0];
+        geo_dict["5"][2] = geo_dict["3"][0];
+        geo_dict["5"][3] = geo_dict["4"][0];
+
+        document.getElementById("5th_fire").removeAttribute("style");
+        if (geo_dict["5"][0]) {
+            document.getElementById("5th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("5th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("5th_air").removeAttribute("style");
+        if (geo_dict["5"][1]) {
+            document.getElementById("5th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("5th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("5th_water").removeAttribute("style");
+        if (geo_dict["5"][2]) {
+            document.getElementById("5th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("5th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("5th_erath").removeAttribute("style");
+        if (geo_dict["5"][3]) {
+            document.getElementById("5th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("5th_erath").innerHTML = "o o";
+        }
+
+        get_6th();
+
+    }
+
+    function get_6th() {
+        geo_dict["6"][0] = geo_dict["1"][1];
+        geo_dict["6"][1] = geo_dict["2"][1];
+        geo_dict["6"][2] = geo_dict["3"][1];
+        geo_dict["6"][3] = geo_dict["4"][1];
+
+        document.getElementById("6th_fire").removeAttribute("style");
+        if (geo_dict["6"][0]) {
+            document.getElementById("6th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("6th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("6th_air").removeAttribute("style");
+        if (geo_dict["6"][1]) {
+            document.getElementById("6th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("6th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("6th_water").removeAttribute("style");
+        if (geo_dict["6"][2]) {
+            document.getElementById("6th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("6th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("6th_erath").removeAttribute("style");
+        if (geo_dict["6"][3]) {
+            document.getElementById("6th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("6th_erath").innerHTML = "o o";
+        }
+
+        get_7th();
+
+    }
+
+    function get_7th() {
+        geo_dict["7"][0] = geo_dict["1"][2];
+        geo_dict["7"][1] = geo_dict["2"][2];
+        geo_dict["7"][2] = geo_dict["3"][2];
+        geo_dict["7"][3] = geo_dict["4"][2];
+
+        document.getElementById("7th_fire").removeAttribute("style");
+        if (geo_dict["7"][0]) {
+            document.getElementById("7th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("7th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("7th_air").removeAttribute("style");
+        if (geo_dict["7"][1]) {
+            document.getElementById("7th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("7th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("7th_water").removeAttribute("style");
+        if (geo_dict["7"][2]) {
+            document.getElementById("7th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("7th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("7th_erath").removeAttribute("style");
+        if (geo_dict["7"][3]) {
+            document.getElementById("7th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("7th_erath").innerHTML = "o o";
+        }
+
+        get_8th();
+
+    }
+
+    function get_8th() {
+        geo_dict["8"][0] = geo_dict["1"][3];
+        geo_dict["8"][1] = geo_dict["2"][3];
+        geo_dict["8"][2] = geo_dict["3"][3];
+        geo_dict["8"][3] = geo_dict["4"][3];
+
+        document.getElementById("8th_fire").removeAttribute("style");
+        if (geo_dict["8"][0]) {
+            document.getElementById("8th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("8th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("8th_air").removeAttribute("style");
+        if (geo_dict["8"][1]) {
+            document.getElementById("8th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("8th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("8th_water").removeAttribute("style");
+        if (geo_dict["8"][2]) {
+            document.getElementById("8th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("8th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("8th_erath").removeAttribute("style");
+        if (geo_dict["8"][3]) {
+            document.getElementById("8th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("8th_erath").innerHTML = "o o";
+        }
+
+        get_9th();
+
+    }
+
+    function get_9th() {
+        geo_dict["9"][0] = geo_dict["1"][0] ^ geo_dict["2"][0];
+        geo_dict["9"][1] = geo_dict["1"][1] ^ geo_dict["2"][1];
+        geo_dict["9"][2] = geo_dict["1"][2] ^ geo_dict["2"][2];
+        geo_dict["9"][3] = geo_dict["1"][3] ^ geo_dict["2"][3];
+
+        document.getElementById("9th_fire").removeAttribute("style");
+        if (geo_dict["9"][0]) {
+            document.getElementById("9th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("9th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("9th_air").removeAttribute("style");
+        if (geo_dict["9"][1]) {
+            document.getElementById("9th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("9th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("9th_water").removeAttribute("style");
+        if (geo_dict["9"][2]) {
+            document.getElementById("9th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("9th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("9th_erath").removeAttribute("style");
+        if (geo_dict["9"][3]) {
+            document.getElementById("9th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("9th_erath").innerHTML = "o o";
+        }
+
+        get_10th();
+    }
+
+    function get_10th() {
+        geo_dict["10"][0] = geo_dict["3"][0] ^ geo_dict["4"][0];
+        geo_dict["10"][1] = geo_dict["3"][1] ^ geo_dict["4"][1];
+        geo_dict["10"][2] = geo_dict["3"][2] ^ geo_dict["4"][2];
+        geo_dict["10"][3] = geo_dict["3"][3] ^ geo_dict["4"][3];
+
+        document.getElementById("10th_fire").removeAttribute("style");
+        if (geo_dict["10"][0]) {
+            document.getElementById("10th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("10th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("10th_air").removeAttribute("style");
+        if (geo_dict["10"][1]) {
+            document.getElementById("10th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("10th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("10th_water").removeAttribute("style");
+        if (geo_dict["10"][2]) {
+            document.getElementById("10th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("10th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("10th_erath").removeAttribute("style");
+        if (geo_dict["10"][3]) {
+            document.getElementById("10th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("10th_erath").innerHTML = "o o";
+        }
+
+        get_11th();
+    }
+
+    function get_11th() {
+        geo_dict["11"][0] = geo_dict["5"][0] ^ geo_dict["6"][0];
+        geo_dict["11"][1] = geo_dict["5"][1] ^ geo_dict["6"][1];
+        geo_dict["11"][2] = geo_dict["5"][2] ^ geo_dict["6"][2];
+        geo_dict["11"][3] = geo_dict["5"][3] ^ geo_dict["6"][3];
+
+        document.getElementById("11th_fire").removeAttribute("style");
+        if (geo_dict["11"][0]) {
+            document.getElementById("11th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("11th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("11th_air").removeAttribute("style");
+        if (geo_dict["11"][1]) {
+            document.getElementById("11th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("11th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("11th_water").removeAttribute("style");
+        if (geo_dict["11"][2]) {
+            document.getElementById("11th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("11th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("11th_erath").removeAttribute("style");
+        if (geo_dict["11"][3]) {
+            document.getElementById("11th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("11th_erath").innerHTML = "o o";
+        }
+
+        get_12th();
+    }
+
+    function get_12th() {
+        geo_dict["12"][0] = geo_dict["7"][0] ^ geo_dict["8"][0];
+        geo_dict["12"][1] = geo_dict["7"][1] ^ geo_dict["8"][1];
+        geo_dict["12"][2] = geo_dict["7"][2] ^ geo_dict["8"][2];
+        geo_dict["12"][3] = geo_dict["7"][3] ^ geo_dict["8"][3];
+
+        document.getElementById("12th_fire").removeAttribute("style");
+        if (geo_dict["12"][0]) {
+            document.getElementById("12th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("12th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("12th_air").removeAttribute("style");
+        if (geo_dict["12"][1]) {
+            document.getElementById("12th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("12th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("12th_water").removeAttribute("style");
+        if (geo_dict["12"][2]) {
+            document.getElementById("12th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("12th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("12th_erath").removeAttribute("style");
+        if (geo_dict["12"][3]) {
+            document.getElementById("12th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("12th_erath").innerHTML = "o o";
+        }
+
+        get_13th();
+    }
+
+    function get_13th() {
+        geo_dict["13"][0] = geo_dict["9"][0] ^ geo_dict["10"][0];
+        geo_dict["13"][1] = geo_dict["9"][1] ^ geo_dict["10"][1];
+        geo_dict["13"][2] = geo_dict["9"][2] ^ geo_dict["10"][2];
+        geo_dict["13"][3] = geo_dict["9"][3] ^ geo_dict["10"][3];
+
+        document.getElementById("13th_fire").removeAttribute("style");
+        if (geo_dict["13"][0]) {
+            document.getElementById("13th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("13th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("13th_air").removeAttribute("style");
+        if (geo_dict["13"][1]) {
+            document.getElementById("13th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("13th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("13th_water").removeAttribute("style");
+        if (geo_dict["13"][2]) {
+            document.getElementById("13th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("13th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("13th_erath").removeAttribute("style");
+        if (geo_dict["13"][3]) {
+            document.getElementById("13th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("13th_erath").innerHTML = "o o";
+        }
+
+        get_14th();
+    }
+
+    function get_14th() {
+        geo_dict["14"][0] = geo_dict["11"][0] ^ geo_dict["12"][0];
+        geo_dict["14"][1] = geo_dict["11"][1] ^ geo_dict["12"][1];
+        geo_dict["14"][2] = geo_dict["11"][2] ^ geo_dict["12"][2];
+        geo_dict["14"][3] = geo_dict["11"][3] ^ geo_dict["12"][3];
+
+        document.getElementById("14th_fire").removeAttribute("style");
+        if (geo_dict["14"][0]) {
+            document.getElementById("14th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("14th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("14th_air").removeAttribute("style");
+        if (geo_dict["14"][1]) {
+            document.getElementById("14th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("14th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("14th_water").removeAttribute("style");
+        if (geo_dict["14"][2]) {
+            document.getElementById("14th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("14th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("14th_erath").removeAttribute("style");
+        if (geo_dict["14"][3]) {
+            document.getElementById("14th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("14th_erath").innerHTML = "o o";
+        }
+
+        get_15th();
+    }
+
+    function get_15th() {
+        geo_dict["15"][0] = geo_dict["13"][0] ^ geo_dict["14"][0];
+        geo_dict["15"][1] = geo_dict["13"][1] ^ geo_dict["14"][1];
+        geo_dict["15"][2] = geo_dict["13"][2] ^ geo_dict["14"][2];
+        geo_dict["15"][3] = geo_dict["13"][3] ^ geo_dict["14"][3];
+
+        document.getElementById("15th_fire").removeAttribute("style");
+        if (geo_dict["15"][0]) {
+            document.getElementById("15th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("15th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("15th_air").removeAttribute("style");
+        if (geo_dict["15"][1]) {
+            document.getElementById("15th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("15th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("15th_water").removeAttribute("style");
+        if (geo_dict["15"][2]) {
+            document.getElementById("15th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("15th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("15th_erath").removeAttribute("style");
+        if (geo_dict["15"][3]) {
+            document.getElementById("15th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("15th_erath").innerHTML = "o o";
+        }
+        console.log(geo_dict);
+
+        get_16th();
+    }
+
+    function get_16th() {
+        geo_dict["16"][0] = geo_dict["15"][0] ^ geo_dict["1"][0];
+        geo_dict["16"][1] = geo_dict["15"][1] ^ geo_dict["1"][1];
+        geo_dict["16"][2] = geo_dict["15"][2] ^ geo_dict["1"][2];
+        geo_dict["16"][3] = geo_dict["15"][3] ^ geo_dict["1"][3];
+
+        document.getElementById("16th_fire").removeAttribute("style");
+        if (geo_dict["16"][0]) {
+            document.getElementById("16th_fire").innerHTML = " o ";
+        } else {
+            document.getElementById("16th_fire").innerHTML = "o o";
+        }
+
+        document.getElementById("16th_air").removeAttribute("style");
+        if (geo_dict["16"][1]) {
+            document.getElementById("16th_air").innerHTML = " o ";
+        } else {
+            document.getElementById("16th_air").innerHTML = "o o";
+        }
+
+        document.getElementById("16th_water").removeAttribute("style");
+        if (geo_dict["16"][2]) {
+            document.getElementById("16th_water").innerHTML = " o ";
+        } else {
+            document.getElementById("16th_water").innerHTML = "o o";
+        }
+
+        document.getElementById("16th_erath").removeAttribute("style");
+        if (geo_dict["16"][3]) {
+            document.getElementById("16th_erath").innerHTML = " o ";
+        } else {
+            document.getElementById("16th_erath").innerHTML = "o o";
+        }
+    }
+
+</script>
+
+</html>
