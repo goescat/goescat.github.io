@@ -1,0 +1,211 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>木棒分組占卜</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+      }
+
+      #horizontal-stick {
+        width: 320px;
+        height: 10px;
+        background-color: #654321;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      }
+
+      #container {
+        display: flex;
+        gap: 2px;
+        user-select: none;
+        width: 90%;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .stick {
+        width: 6px;
+        background-color: #8B4513;
+        transition: transform 0.3s;
+        transform: rotate(var(--angle));
+        margin-top: var(--mt);
+        height: var(--height);
+      }
+
+      .left {
+        transform: translateX(-10px) rotate(var(--angle));
+        background-color: #CD853F;
+      }
+
+      .right {
+        transform: translateX(10px) rotate(var(--angle));
+        background-color: #D2691E;
+      }
+
+      #status {
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      #log {
+        white-space: pre-line;
+        font-size: 0.9em;
+        max-width: 90%;
+        margin-bottom: 10px;
+      }
+
+      button {
+        padding: 6px 12px;
+        margin: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>木棒分組占卜</h2>
+
+    <div id="horizontal-stick"></div>
+    <div id="container"></div>
+
+    <div id="status">第 1 回 / 第 1 輪</div>
+    <div id="count">左側：0，右側：0</div>
+    <div id="log"></div>
+    <button id="nextStageBtn" disabled>下一輪</button>
+    <button id="nextRoundBtn" style="display:none">下一回</button>
+
+    <script>
+      const container = document.getElementById('container');
+      const status = document.getElementById('status');
+      const countDiv = document.getElementById('count');
+      const logDiv = document.getElementById('log');
+      const nextStageBtn = document.getElementById('nextStageBtn');
+      const nextRoundBtn = document.getElementById('nextRoundBtn');
+      let yao = {};
+
+
+      let roundIndex = 0;
+      let stageIndex = 0;
+      let left = 0, right = 0;
+      const results = [];
+
+      function generateSticks(n) {
+        container.innerHTML = '';
+        for (let i = 0; i < n; i++) {
+          const stick = document.createElement('div');
+          stick.classList.add('stick');
+          stick.style.setProperty('--angle', `${(Math.random() - 0.5) * 12}deg`);
+          stick.style.setProperty('--mt', `${Math.random() * 20}px`);
+          stick.style.setProperty('--height', `${80 + Math.random() * 40}px`);
+          container.appendChild(stick);
+        }
+      }
+
+      function updateStatus() {
+        status.textContent = `第 ${roundIndex + 1} 回 / 第 ${stageIndex + 1} 輪`;
+      }
+
+      function handleSplit(e) {
+        const clickX = e.clientX;
+        const sticks = Array.from(document.querySelectorAll('.stick'));
+        left = 0;
+        right = 0;
+
+        sticks.forEach(stick => {
+          const rect = stick.getBoundingClientRect();
+          const midX = (rect.left + rect.right) / 2;
+          stick.classList.remove('left', 'right');
+          if (midX < clickX) {
+            stick.classList.add('left');
+            left++;
+          } else {
+            stick.classList.add('right');
+            right++;
+          }
+        });
+
+        countDiv.textContent = `左側：${left}，右側：${right}`;
+        nextStageBtn.disabled = false;
+        container.removeEventListener('click', handleSplit);
+      }
+
+      function reduceGroup(count, isLeft) {
+        let c = isLeft ? count - 1 : count;
+        if (c % 4 === 0) {
+          c -= 4;
+        }
+        c -= c % 4;
+        return Math.max(c / 4, 0);
+      }
+
+      function nextStage() {
+        const groupLeft = reduceGroup(left, true);
+        const groupRight = reduceGroup(right, false);
+        logDiv.textContent += `第 ${stageIndex + 1} 輪：左 ${left}->${groupLeft}組，右 ${right}->${groupRight}組\n`;
+
+        // 下一輪數量變成剩餘的
+        left = groupLeft * 4;
+        right = groupRight * 4;
+        stageIndex++;
+
+        if (stageIndex < 3) {
+          updateStatus();
+          generateSticks(left + right);
+          nextStageBtn.disabled = true;
+          countDiv.textContent = `左側：${left}，右側：${right}`;
+          container.addEventListener('click', handleSplit);
+        } else {
+          results.push({ round: roundIndex + 1, leftGroups: groupLeft, rightGroups: groupRight });
+          nextStageBtn.style.display = 'none';
+          nextRoundBtn.style.display = 'inline';
+        }
+      }
+
+      function nextRound() {
+        roundIndex++;
+        stageIndex = 0;
+        logDiv.textContent += `\n`;
+        if (roundIndex >= 6) {
+          logDiv.textContent += `\n遊戲結束！結果如下：\n`;
+          results.forEach(r => {
+            logDiv.textContent += `第 ${r.round} 回結果：左 ${r.leftGroups} 組，右 ${r.rightGroups} 組\n`;
+            yao[r.round] = r.leftGroups + r.rightGroups;
+          });
+          getAllYao();  // 顯示六爻
+          nextRoundBtn.style.display = 'none';
+          return;
+        }
+
+        function getAllYao() {
+          logDiv.textContent += `第 6 爻：${yao[6]}\n`;
+          logDiv.textContent += `第 5 爻：${yao[5]}\n`;
+          logDiv.textContent += `第 4 爻：${yao[4]}\n`;
+          logDiv.textContent += `第 3 爻：${yao[3]}\n`;
+          logDiv.textContent += `第 2 爻：${yao[2]}\n`;
+          logDiv.textContent += `第 1 爻：${yao[1]}\n`;
+        }
+
+        updateStatus();
+        generateSticks(49);
+        nextStageBtn.style.display = 'inline';
+        nextStageBtn.disabled = true;
+        nextRoundBtn.style.display = 'none';
+        countDiv.textContent = '左側：0，右側：0';
+        container.addEventListener('click', handleSplit);
+      }
+
+      // 初始開始
+      updateStatus();
+      generateSticks(49);
+      container.addEventListener('click', handleSplit);
+      nextStageBtn.addEventListener('click', nextStage);
+      nextRoundBtn.addEventListener('click', nextRound);
+    </script>
+  </body>
+  </html>
